@@ -1,5 +1,7 @@
 package com.todoList.todoList.model;
 
+import com.todoList.todoList.enums.Status;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,9 +16,9 @@ public class TodoModel {
     private long id;
     private String titulo;
     private String restricao;
-    private String status;
+    private Status status;
 
-    public TodoModel(long id, String titulo, String restricao, String status) {
+    public TodoModel(long id, String titulo, String restricao, Status status) {
         this.id = id;
         this.titulo = titulo;
         this.restricao = restricao;
@@ -49,11 +51,11 @@ public class TodoModel {
         this.restricao = restricao;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
