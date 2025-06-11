@@ -17,12 +17,14 @@ public class TodoModel {
     private String titulo;
     private String restricao;
     private Status status;
+    private int prioridade;
 
-    public TodoModel(long id, String titulo, String restricao, Status status) {
+    public TodoModel(long id, String titulo, String restricao, Status status, int prioridade) {
         this.id = id;
         this.titulo = titulo;
         this.restricao = restricao;
         this.status = status;
+        this.prioridade = prioridade;
     }
 
     public TodoModel(){}
@@ -57,6 +59,14 @@ public class TodoModel {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public int getPrioridade() {
+        return prioridade;
+    }
+
+    public void setPrioridade(int prioridade) {
+        this.prioridade = prioridade;
     }
 
     
