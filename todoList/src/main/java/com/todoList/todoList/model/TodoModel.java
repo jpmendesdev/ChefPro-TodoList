@@ -9,20 +9,20 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "TodoList")
+@Table(name = "todoListTable")
 public class TodoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String titulo;
-    private String restricao;
+    private String descricao;
     private Status status;
     private int prioridade;
-
-    public TodoModel(long id, String titulo, String restricao, Status status, int prioridade) {
+    
+    public TodoModel(long id, String titulo, String descricao, Status status, int prioridade) {
         this.id = id;
         this.titulo = titulo;
-        this.restricao = restricao;
+        this.descricao = descricao;
         this.status = status;
         this.prioridade = prioridade;
     }
@@ -45,12 +45,12 @@ public class TodoModel {
         this.titulo = titulo;
     }
 
-    public String getRestricao() {
-        return restricao;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setRestricao(String restricao) {
-        this.restricao = restricao;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public Status getStatus() {
@@ -69,6 +69,7 @@ public class TodoModel {
         this.prioridade = prioridade;
     }
 
+    
     
     
 }
