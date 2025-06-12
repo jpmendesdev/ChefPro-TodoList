@@ -27,4 +27,14 @@ public class TodoService {
         return todoRepository.findAll();
     }
 
+    public List<TodoModel> update(TodoModel todo){
+        todoRepository.save(todo);
+        return list();
+    }
+
+    public List<TodoModel> delete(Long id){
+        todoRepository.deleteById(id);
+        return list();
+    }
+
 }
