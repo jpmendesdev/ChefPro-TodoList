@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,6 +28,8 @@ public class TodoController {
         this.todoService = todoService;
     }
 
+    
+
     @PostMapping
     public ResponseEntity<List<TodoModel>> create(@RequestBody TodoModel todo) {
         List<TodoModel> todos = todoService.create(todo);
@@ -38,7 +41,7 @@ public class TodoController {
         return todoService.list();
     }
 
-    @PostMapping
+    @PutMapping
     List<TodoModel> update(@RequestBody TodoModel todo){
         return todoService.update(todo);
     }
