@@ -18,4 +18,4 @@ target/
 .vscode/
 
 ## Resources DB ##
-src/main/resources/
+resources/
