@@ -58,6 +58,34 @@ function salvarTarefa(event){
     .catch(err => console.error(`Erro ao ${modoEdicao ? 'atualizar' : 'cadastrar'} tarefa:`, err));
 }
 
+function excluirTarefa(id) {
+    if (!confirm('Tem certeza que deseja excluir esta tarefa?')) {
+        return;
+    }
+
+    fetch(`http://localhost:8080/todos/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Accept": "application/json"
+        }
+    })
+    .then(res => {
+        if (!res.ok) {
+            return res.json().then(errorData => {
+                throw new Error(`HTTP error! status: ${res.status}, Message: ${errorData.message || JSON.stringify(errorData)}`);
+            }).catch(() => {
+                throw new Error(`HTTP error! status: ${res.status}`);
+            });
+        }
+        return res.json();
+    })
+    .then(data => {
+        console.log("Tarefa excluída com sucesso:", data);
+        listarTarefas();
+    })
+    .catch(err => console.error("Erro ao excluir tarefa:", err));
+}
+
 
 function listarTarefas() {
     fetch("http://localhost:8080/todos")
