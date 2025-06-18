@@ -87,6 +87,21 @@ function excluirTarefa(id) {
 }
 
 
+function editarTarefa(tarefa) {
+    ititulo.value = tarefa.titulo;
+    idescricao.value = tarefa.descricao;
+
+    istatus.value = tarefa.status;
+    iprioridade.value = tarefa.prioridade;
+
+
+    modoEdicao = true;
+    idTarefaEditando = tarefa.id; 
+    btnCadastrar.textContent = "Atualizar Tarefa"; 
+
+}
+
+
 function listarTarefas() {
     fetch("http://localhost:8080/todos")
         .then(response => {
@@ -110,7 +125,12 @@ function listarTarefas() {
 
             tarefas.forEach(tarefa => {
                 const item = document.createElement("li");
-                const statusTexto = tarefa.status ? 'CONCLUÍDO' : 'PENDENTE/EM ANDAMENTO';
+                const statusTexto = {
+                    "PENDENTE": "Pendente",
+                    "EM_ANDAMENTO": "Em andamento",
+                    "CONCLUIDO": "Concluído"
+                    }[tarefa.status] || "Desconhecido";
+
 
                 item.innerHTML = `
                     <div class="info-tarefa">

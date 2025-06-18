@@ -14,7 +14,11 @@
         <form id="formulario">
             <input type="text" class="titulo" placeHolder="Titulo" required>
             <input type="text" class="descricao" placeHolder="Descrição" required>
-            <input type="text" class="status" placeHolder="Status" required>
+            <select class="status" required>
+                <option value="PENDENTE">Pendente</option>
+                <option value="EM_ANDAMENTO">Em andamento</option>
+                <option value="CONCLUIDO">Concluído</option>
+            </select>
             <input type="text" class="prioridade" placeHolder="Prioridade(1,2,3...10)" required>
             <button type="submit">Cadastrar</button>
         </form>
