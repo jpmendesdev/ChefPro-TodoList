@@ -22,3 +22,49 @@ body {
     text-align: center;
 }
 
+
+h1 {
+    color: #4CAF50; 
+    margin-bottom: 25px;
+    font-size: 2.5em;
+    font-weight: 600;
+}
+
+h2 {
+    color: #555;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+#formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+    margin-bottom: 30px;
+}
+
+#formulario input[type="text"],
+#formulario input[type="number"],
+#formulario select {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    width: calc(100% - 30px);
+    box-sizing: border-box;
+}
+
+
+#formulario input::placeholder {
+    color: #aaa;
+}
+
+#formulario select {
+    background-color: white;
+    color: #333;
+    appearance: none; 
+}
+
