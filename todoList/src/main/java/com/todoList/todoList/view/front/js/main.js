@@ -109,7 +109,7 @@ function cancelarEdicao() {
     idTarefaEditando = null;
     btnCadastrar.textContent = "Cadastrar";
     formulario.reset();
-    btnCancelar.style.display = "none"; // 
+    btnCancelar.style.display = "none";
 }
 
 
