@@ -4,6 +4,8 @@ const idescricao = document.querySelector(".descricao");
 const istatus = document.querySelector(".status");
 const iprioridade = document.querySelector(".prioridade");
 const btnCadastrar = document.querySelector("#formulario button[type= 'submit']");
+const btnCancelar = document.querySelector("#btnCancelar");
+
 
 let modoEdicao = false;
 let idTarefaEditando = null;
@@ -53,6 +55,7 @@ function salvarTarefa(event){
     .then(data => {
         console.log("Sucesso:", data);
         formulario.reset(); 
+        cancelarEdicao();
         listarTarefas();
     })
     .catch(err => console.error(`Erro ao ${modoEdicao ? 'atualizar' : 'cadastrar'} tarefa:`, err));
@@ -90,15 +93,23 @@ function excluirTarefa(id) {
 function editarTarefa(tarefa) {
     ititulo.value = tarefa.titulo;
     idescricao.value = tarefa.descricao;
-
     istatus.value = tarefa.status;
     iprioridade.value = tarefa.prioridade;
 
-
     modoEdicao = true;
-    idTarefaEditando = tarefa.id; 
-    btnCadastrar.textContent = "Atualizar Tarefa"; 
+    idTarefaEditando = tarefa.id;
+    btnCadastrar.textContent = "Atualizar Tarefa";
+    btnCancelar.style.display = "inline"; 
+}
 
+
+
+function cancelarEdicao() {
+    modoEdicao = false;
+    idTarefaEditando = null;
+    btnCadastrar.textContent = "Cadastrar";
+    formulario.reset();
+    btnCancelar.style.display = "none"; // 
 }
 
 
@@ -163,6 +174,7 @@ function listarTarefas() {
 
 formulario.addEventListener("submit", salvarTarefa);
 document.addEventListener("DOMContentLoaded", listarTarefas);
+btnCancelar.addEventListener("click", cancelarEdicao);
 
 
 
