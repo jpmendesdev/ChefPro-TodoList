@@ -9,6 +9,56 @@ let modoEdicao = false;
 let idTarefaEditando = null;
 
 
+function salvarTarefa(event){
+    event.preventDefault();
+
+    const statusRealizado = istatus.value.toUpperCase() === 'CONCLUIDO';
+    const prioridadeValue = parseInt(iprioridade.value);
+
+    const dadosTarefa = {
+        titulo: ititulo.value,
+        descricao: idescricao.value,
+        status: istatus.value,
+        prioridade: iprioridade.value
+    };
+
+    let url = "http://localhost:8080/todos";
+    let method = "POST"
+
+    if (modoEdicao) {
+        url = `http://localhost:8080/todos`;
+        method = "PUT";
+        dadosTarefa.id = idTarefaEditando;
+    }
+
+
+    fetch(url, {
+        method: method,
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dadosTarefa)
+    })
+     .then(res => {
+        if (!res.ok) {
+            return res.json().then(errorData => {
+                throw new Error(`HTTP error! status: ${res.status}, Message: ${errorData.message || JSON.stringify(errorData)}`);
+            }).catch(() => {
+                throw new Error(`HTTP error! status: ${res.status}`);
+            });
+        }
+        return res.json();
+    })
+    .then(data => {
+        console.log("Sucesso:", data);
+        formulario.reset(); 
+        listarTarefas();
+    })
+    .catch(err => console.error(`Erro ao ${modoEdicao ? 'atualizar' : 'cadastrar'} tarefa:`, err));
+}
+
+
 function listarTarefas() {
     fetch("http://localhost:8080/todos")
         .then(response => {
@@ -32,11 +82,11 @@ function listarTarefas() {
 
             tarefas.forEach(tarefa => {
                 const item = document.createElement("li");
-                const statusTexto = tarefa.realizado ? 'CONCLUÍDO' : 'PENDENTE/EM ANDAMENTO';
+                const statusTexto = tarefa.status ? 'CONCLUÍDO' : 'PENDENTE/EM ANDAMENTO';
 
                 item.innerHTML = `
                     <div class="info-tarefa">
-                        <strong>${tarefa.nome || 'Título não definido'}</strong>
+                        <strong>${tarefa.titulo || 'Título não definido'}</strong>
                         <span>Descrição: ${tarefa.descricao || 'Descrição não definida'}</span>
                         <span>Status: ${statusTexto}</span>
                         <span>Prioridade: ${tarefa.prioridade !== undefined ? tarefa.prioridade : 'Prioridade não definida'}</span>
@@ -63,7 +113,9 @@ function listarTarefas() {
         .catch(error => console.error("Erro ao buscar tarefas:", error));
 }
 
+formulario.addEventListener("submit", salvarTarefa);
 document.addEventListener("DOMContentLoaded", listarTarefas);
+
 
 
 
