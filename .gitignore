@@ -17,8 +17,6 @@ target/
 ### VS Code ###
 .vscode/
 
-## Resources DB ##
-todoList/src/main/resources/
 
  
 
