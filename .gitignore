@@ -18,4 +18,11 @@ target/
 .vscode/
 
 ## Resources DB ##
-resources/
+todoList/resources/
+
+ 
+
+# Outras coisas que você queira ignorar
+todoList/target/
+logs/
+*.log
