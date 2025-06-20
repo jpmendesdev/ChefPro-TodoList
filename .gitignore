@@ -17,9 +17,6 @@ target/
 ### VS Code ###
 .vscode/
 
-
- 
-
 # Outras coisas que você queira ignorar
 todoList/target/
 logs/
