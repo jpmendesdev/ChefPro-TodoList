@@ -5,7 +5,7 @@ API RESTful para gerenciamento de tarefas (TODOs), construída com Spring Boot.
 ## 🌐 Base URL
 
 ```
-http://localhost:3000
+http://localhost:8080
 ```
 
 ---
@@ -19,7 +19,7 @@ http://localhost:3000
 **Exemplo de requisição:**
 
 ```bash
-curl -X GET http://localhost:3000/todos \
+curl -X GET http://localhost:8080/todos \
   -H 'Accept: application/json'
 ```
 
@@ -29,16 +29,16 @@ curl -X GET http://localhost:3000/todos \
 [
   {
     "id": 1,
-    "title": "Estudar Spring Boot",
-    "description": "Estudar como criar APIs REST com Spring Boot",
-    "status": "PENDING",
+    "titulo": "Estudar Spring Boot",
+    "descricao": "Estudar como criar APIs REST com Spring Boot",
+    "status": "PENDENTE",
     "prioridade": 1
   },
   {
     "id": 2,
-    "title": "Fazer compras",
-    "description": "Comprar frutas e legumes",
-    "status": "DONE",
+    "titulo": "Fazer compras",
+    "descricao": "Comprar frutas e legumes",
+    "status": "CONCLUIDO",
     "prioridade": 2
   }
 ]
@@ -54,9 +54,9 @@ curl -X GET http://localhost:3000/todos \
 
 ```json
 {
-  "title": "string",
-  "description": "string",
-  "status": "PENDING",
+  "titulo": "string",
+  "descricao": "string",
+  "status": "PENDENTE",
   "prioridade": 5
 }
 ```
@@ -66,9 +66,9 @@ curl -X GET http://localhost:3000/todos \
 ```json
 {
   "id": 3,
-  "title": "Nova tarefa",
-  "description": "Descrição da tarefa",
-  "status": "PENDING",
+  "titulo": "Nova tarefa",
+  "descricao": "Descrição da tarefa",
+  "status": "EM_ANDAMENTO",
   "prioridade": 1
 }
 ```
@@ -84,8 +84,8 @@ curl -X GET http://localhost:3000/todos \
 ```json
 {
   "id": 1,
-  "title": "string",
-  "description": "string",
+  "titulo": "string",
+  "descricao": "string",
   "status": "CONCLUIDO",
   "prioridade": 1
 }
@@ -96,8 +96,8 @@ curl -X GET http://localhost:3000/todos \
 ```json
 {
   "id": 2,
-  "title": "Estudar Spring Boot",
-  "description": "Com foco em APIs REST",
+  "titulo": "Estudar Spring Boot",
+  "descricao": "Com foco em APIs REST",
   "status": "PENDENTE",
   "prioridade": 2
 }
